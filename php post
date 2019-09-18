@@ -13,7 +13,7 @@
     		$wmobile = $_POST['wmobile'];
     		$msg = $_POST['message'];
 
-    		$query = "SELECT `email`FROM `aim` WHERE email = '".$email."' ";
+    		$query = "SELECT `email`FROM `contact` WHERE email = '".$email."' ";
 			$result = mysqli_query($con, $query);
 
 			    if(mysqli_num_rows($result) > 0){
@@ -23,7 +23,7 @@
 			    }
 			    else{
 
-	    		$sql = "INSERT INTO `aim`(`name`, `class`, `email`, `mobile`, `wmobile`, `msg`) VALUES ('$name', '$class', '$email', '$mobile', '$wmobile', '$msg')";
+	    		$sql = "INSERT INTO `contact`(`name`, `class`, `email`, `mobile`, `wmobile`, `msg`) VALUES ('$name', '$class', '$email', '$mobile', '$wmobile', '$msg')";
 					if(mysqli_query($con, $sql)){
 					    echo "<script type='text/javascript'>alert('Records inserted successfully');
 					    		window.location.href='https://www.malabarics.com';
