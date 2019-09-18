@@ -1,0 +1,43 @@
+<?php
+    $con = mysqli_connect('localhost', 'username', 'password', 'dbname');
+ 
+    if($con === false){
+        die("ERROR: Could not connect. " . mysqli_connect_error());
+    }
+    else{
+    	if(isset($_POST['submit'])){
+    		$name = $_POST['name'];
+    		$class = $_POST['class'];
+    		$email = $_POST['email'];
+    		$mobile	= $_POST['mobile'];
+    		$wmobile = $_POST['wmobile'];
+    		$msg = $_POST['message'];
+
+    		$query = "SELECT `email`FROM `aim` WHERE email = '".$email."' ";
+			$result = mysqli_query($con, $query);
+
+			    if(mysqli_num_rows($result) > 0){
+			     echo "<script type='text/javascript'>alert('A record already exists.');
+					    		window.location.href='https://aim.malabarics.com';
+					    	</script>";
+			    }
+			    else{
+
+	    		$sql = "INSERT INTO `aim`(`name`, `class`, `email`, `mobile`, `wmobile`, `msg`) VALUES ('$name', '$class', '$email', '$mobile', '$wmobile', '$msg')";
+					if(mysqli_query($con, $sql)){
+					    echo "<script type='text/javascript'>alert('Records inserted successfully');
+					    		window.location.href='https://www.malabarics.com';
+					    	</script>";
+					} else{
+					    echo "<script type='text/javascript'>alert('Failed try again!');
+					    		window.location.href='https://aim.malabarics.com';
+					    	</script>";
+					}
+					 
+					// Close connection
+					mysqli_close($con);
+				}
+    	}
+    }
+
+?>
