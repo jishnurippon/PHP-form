@@ -13,24 +13,24 @@
     		$wmobile = $_POST['wmobile'];
     		$msg = $_POST['message'];
 
-    		$query = "SELECT `email`FROM `contact` WHERE email = '".$email."' ";
+    		$query = "SELECT `TABLE`FROM `contact` WHERE email = '".$email."' ";
 			$result = mysqli_query($con, $query);
 
 			    if(mysqli_num_rows($result) > 0){
 			     echo "<script type='text/javascript'>alert('A record already exists.');
-					    		window.location.href='https://aim.malabarics.com';
+					    		window.location.href='REDIRECT URL';
 					    	</script>";
 			    }
 			    else{
 
-	    		$sql = "INSERT INTO `contact`(`name`, `class`, `email`, `mobile`, `wmobile`, `msg`) VALUES ('$name', '$class', '$email', '$mobile', '$wmobile', '$msg')";
+	    		$sql = "INSERT INTO `TABLE`(`name`, `class`, `email`, `mobile`, `wmobile`, `msg`) VALUES ('$name', '$class', '$email', '$mobile', '$wmobile', '$msg')";
 					if(mysqli_query($con, $sql)){
 					    echo "<script type='text/javascript'>alert('Records inserted successfully');
-					    		window.location.href='https://www.malabarics.com';
+					    		window.location.href='REDIRECT URL';
 					    	</script>";
 					} else{
 					    echo "<script type='text/javascript'>alert('Failed try again!');
-					    		window.location.href='https://aim.malabarics.com';
+					    		window.location.href='REDIRECT URL';
 					    	</script>";
 					}
 					 
